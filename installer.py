@@ -14,7 +14,7 @@ url = "https://github.com/scr-autopilot/scr-autopilot/archive/refs/heads/main.zi
 r = requests.get(url)
 open("scr-autopilot-main.zip", "wb").write(r.content)
 with zipfile.ZipFile("./scr-autopilot-main.zip", 'r') as zip_ref:
-    zip_ref.extractall("./scr-autopilot")
+    zip_ref.extractall("./")
 print("\nDownloading Tesseract-OCR...")
 url = "https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w32-setup-v5.0.0-alpha.20201127.exe"
 r = requests.get(url)
