@@ -10,11 +10,15 @@ print("Getting requests module...")
 os.system("py -m pip install requests")
 print("Downloading SCR-Autopilot repository...")
 import requests
-url = "https://github.com/scr-autopilot/scr-autopilot/archive/refs/heads/main.zip"
-r = requests.get(url)
-open("scr-autopilot-main.zip", "wb").write(r.content)
-with zipfile.ZipFile("./scr-autopilot-main.zip", 'r') as zip_ref:
-    zip_ref.extractall("./")
+try:
+    url = "https://github.com/scr-autopilot/scr-autopilot/archive/refs/heads/main.zip"
+    r = requests.get(url)
+    open("scr-autopilot-main.zip", "wb").write(r.content)
+    with zipfile.ZipFile("./scr-autopilot-main.zip", 'r') as zip_ref:
+        zip_ref.extractall("./")
+except:
+    print("--- FAILED TO INSTALL SCR-AUTOPILOT ---")
+    input("The most common cause to this is that the installer-main.zip file is not extracted. Please extract installer-main.zip file you downloaded and run installer.py from there.\nYou can close this window, installation is aborted.")
 print("\nDownloading Tesseract-OCR...")
 url = "https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w32-setup-v5.0.0-alpha.20201127.exe"
 r = requests.get(url)
